@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./ife31data.js"></script>
+    <script src="./js/checkbox.js"></script>
+    <script src="./js/getdata.js"></script>
+    <script src="./js/table.js"></script>
+    <script src="./js/bar.js"></script>
+    <script src="./js/line.js"></script>
+    <script src="./js/history.js"></script>
+    <script src="./app.js"></script>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+    #table-wrapper {
+        margin: 5px 0;
+        min-width: 1109px;
+        min-height: 241px;
+    }
+
+    #table-wrapper th,
+    #table-wrapper td{
+        box-sizing: border-box;
+        width: 70px;
+    }
+
+    #table-wrapper tr:hover td:nth-child(n + 2) {
+        background: #9287e7;
+    }
+    /* 显示编缉二字 */
+    #table-wrapper td:nth-child(n + 3):hover::after {
+        content: '编缉';
+        font-size: 12px;
+        color: #F5F5F5;
+        float: right;
+        line-height: 21px;
+    }
+    /* 隐藏编缉二字 */
+    #table-wrapper td:nth-child(n + 3).notAfter:hover::after {
+        content: '';
+    }
+
+    #table-wrapper td:nth-child(n + 3) {
+        cursor: pointer;
+    }
+
+    #table-wrapper td input {
+        width: 92px;
+    }
+    </style>
+</head>
+<body>
+    <div id= "region-radio-wrapper"></div>
+    <div id= "product-radio-wrapper"></div>
+    <div id= "table-wrapper"></div>
+    <div id= "svg-wrapper" class= "left"></div>
+    <div id= "canvas-wrapper" class= "left"></div>
+</body>
+</html>
