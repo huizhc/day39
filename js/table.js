@@ -174,17 +174,7 @@ function createInput (td) {
             reSet(td);
         } else {
             //创建错误提示
-            let tiptx = '<div id= "tip" style="background: #fff; position: fixed;">请输入正整数喔</div>';
-            document.body.insertAdjacentHTML('beforeend', tiptx);
-            let tip = document.querySelector('#tip');
-            tip.style.left = e.clientX + 10 + 'px';
-            tip.style.top = e.clientY + 10 + 'px';
-            tip.timer = setTimeout(() => {
-                if (tip.timer) {
-                    clearTimeout(tip.timer);
-                }
-                tip.style.display = 'none';
-            }, 2000);
+            alert('请输入正整数喔');
         }
     })
     clButton.addEventListener('click', function () {
