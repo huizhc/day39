@@ -2,12 +2,14 @@ function createSvg(svgWr, data, lineW = 850, lineH = 450) {
     //清除先前的svg
     clearSvg(svgWr);
     // 定义好柱状图绘制区域的高度，宽度，轴的高度，宽度
-    let iheight = lineH / 0.95;
-    let iwidth = lineW / 0.95;
+    let iheight = lineH / 0.85;
+    let iwidth = lineW / 0.85;
     // 定义好每一个柱子的宽度及柱子的间隔宽度
     // 定义好柱子颜色，轴的颜色
     let rectW = lineW * .03;
-    let spaceW = lineW * .06; 
+    let spaceW = lineW * .08; 
+    // 开始位置
+    let start = 15;
     let colorArr = ['60acfc', '32d3eb', '5bc49f', 'feb64d', 'ff7c7c',
      '9287e7','60acfc', '32d3eb', '5bc49f', 'feb64d', 'ff7c7c', '9287e7'];
     // 拿到柱状图中的最大值Max
@@ -36,13 +38,18 @@ function createSvg(svgWr, data, lineW = 850, lineH = 450) {
     //     计算将要绘制柱子的高度和位置
     //     绘制每一个柱子
     // }
+    let monthArr = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+    let fontSize = 14;
     let rectHTML = '';
     for (let i = 0; i < data.length; i ++) {
+        let step = (spaceW * i + start)
         let rectH = scale * data[i];
-        rectHTML += '<rect x= "' + (spaceW * (i + 1)) + '\
+        rectHTML += '<rect x= "' + step + '\
         " y= "' + (lineH - rectH) + '" \
         width= "' + rectW + '" height= "' + rectH + '" \
-        fill= "#' + colorArr[i] + '" />';
+        fill= "#' + colorArr[i] + '" />' + 
+        '<text font-size="' + fontSize + '" x="'+ (step - fontSize / 2) +
+        '" y="' + (lineH + fontSize) + '">' + monthArr[i] + '</text>';
     }
     svg.insertAdjacentHTML('beforeend', rectHTML);
 }
